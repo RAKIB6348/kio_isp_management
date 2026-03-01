@@ -11,6 +11,7 @@
                 <field name="marketing_id" string="Marketing Ref"/>
                 <field name="nttn_link_id"/>
                 <field name="nttn_provider_name"/>
+                <field name="mrtg_link"/>
                 <field name="district"/>
                 <field name="upazila"/>
                 <field name="area"/>
@@ -80,6 +81,7 @@
                             </div>
                             <field name="nttn_link_id"/>
                             <field name="nttn_provider_name"/>
+                            <field name="mrtg_link" widget="url"/>
                             <field name="p2p_address" invisible="context.get('hide_noc_specific_fields', False)"/>
                             <field name="additional_ip" invisible="context.get('hide_noc_specific_fields', False)"/>
                             <field name="pop" invisible="context.get('hide_noc_specific_fields', False)"/>
@@ -92,10 +94,10 @@
                             <field name="area" readonly="1"/>
                             <field name="latitude" readonly="1"/>
                             <field name="longitude" readonly="1"/>
-                            <field name="aggregation_point_id"/>
-                            <field name="aggregation_switch_model_no" readonly="1"/>
-                            <field name="aggregation_pop_latitude" readonly="1"/>
-                            <field name="aggregation_pop_longitude" readonly="1"/>
+                            <field name="aggregation_point_id" invisible="context.get('hide_noc_specific_fields', False)"/>
+                            <field name="aggregation_switch_model_no" readonly="1" invisible="context.get('hide_noc_specific_fields', False)"/>
+                            <field name="aggregation_pop_latitude" readonly="1" invisible="context.get('hide_noc_specific_fields', False)"/>
+                            <field name="aggregation_pop_longitude" readonly="1" invisible="context.get('hide_noc_specific_fields', False)"/>
                             <field name="kam"/>
                         </group>
                     </group>
@@ -103,7 +105,7 @@
                     
                     <div class="o_row">
                         <div class="o_col-6">
-                            <separator string="Capacity Details" class="mt0"/>
+                            <separator string="Capacity Details" class="mt16"/>
                             <div name="capacity_lines_group" class="kio_capacity_layout_fix kio_nttn_capacity_scope">
                                 <field name="capacity_line_ids" nolabel="1" class="kio_capacity_one2many">
                                     <tree editable="bottom" create="1" edit="1" delete="1"
@@ -222,6 +224,7 @@
             <search string="Search NTTN Transmission">
                 <field name="seq_id" string="ID"/>
                 <field name="marketing_id"/>
+                <field name="mrtg_link"/>
                 <field name="district"/>
                 <field name="upazila"/>
                 <field name="area"/>

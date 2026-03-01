@@ -29,6 +29,11 @@ class IspTransmissionNTTN(models.Model):
         tracking=True,
         help='Selected NTTN provider for this transmission.'
     )
+    mrtg_link = fields.Char(
+        string='MRTG Link',
+        tracking=True,
+        help='MRTG monitoring URL/reference for this transmission.'
+    )
     p2p_address = fields.Char(
         string='P2P Address',
         tracking=True,
