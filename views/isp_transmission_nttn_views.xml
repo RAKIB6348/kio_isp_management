@@ -123,6 +123,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="o_col-6">
+                            
+                        </div>
+                        
                         <!-- <div class="o_col-6">
                             <separator string="Contact Person Details" class="mt0"/>
                             <div name="capacity_lines_group" class="kio_capacity_layout_fix kio_nttn_capacity_scope">
