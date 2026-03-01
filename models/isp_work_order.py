@@ -303,7 +303,46 @@ class IspWorkOrder(models.Model):
             'remarks': self.remarks or self.additional_notes or '',
             'latitude': self._safe_float(self.latitude),
             'longitude': self._safe_float(self.longitude),
+
+            # নতুন যোগ করো
+            'client_name': self.survey_id.customer_name or self.partner_id.name or '',
+            'email': self.survey_id.email or self.partner_id.email or '',
+            'mobile': self.survey_id.phone or self.partner_id.phone or self.partner_id.mobile or '',
         }
+
+    def _copy_client_info_to_transmission(self):
+        """ Work Order থেকে client info → NTTN/OWN transmission এ কপি করো """
+        self.ensure_one()
+
+        # Client info source (যেখান থেকে নেবে)
+        # উদাহরণ: survey → client → partner অথবা survey এর ফিল্ড থেকে
+        client_name = ""
+        email = ""
+        mobile = ""
+
+        if self.survey_id:
+            # ধরে নিচ্ছি survey বা related client মডেলে এই ফিল্ড আছে
+            # তোমার আসল ডাটা সোর্স অনুযায়ী চেঞ্জ করো
+            survey = self.survey_id
+            client_name = survey.customer_name or survey.partner_id.name or ""
+            email = survey.email or survey.partner_id.email or ""
+            mobile = survey.phone or survey.partner_id.phone or survey.partner_id.mobile or ""
+
+        # NTTN রেকর্ড খুঁজে আপডেট করো
+        nttn = self.env['isp.transmission.nttn'].sudo().search([
+            ('seq_id', '=', self.work_order_name)
+        ], limit=1)
+
+        if nttn:
+            nttn.write({
+                'client_name': client_name.strip(),
+                'email': email.strip(),
+                'mobile': mobile.strip(),
+            })
+
+        # যদি OWN transmission ও থাকে তাহলে ওটাতেও করো (optional)
+        # own = self.env['isp.transmission.own'].sudo().search([...])
+        # if own: own.write({...})
 
     def _copy_capacity_lines_to_nttn(self, nttn):
         for line in self.capacity_type_ids:
@@ -333,17 +372,43 @@ class IspWorkOrder(models.Model):
         if 'nttn' in selected_links:
             TransmissionNTTN = self.env['isp.transmission.nttn'].sudo()
             nttn = TransmissionNTTN.search([('seq_id', '=', common_vals['seq_id'])], limit=1)
+
+            client_data = {
+                'client_name': common_vals.get('client_name', ''),
+                'email': common_vals.get('email', ''),
+                'mobile': common_vals.get('mobile', ''),
+            }
+
             if not nttn:
-                nttn_vals = dict(common_vals, aggregation_point_id=self.aggregation_point_id.id or False)
+                # New record → include client info in creation vals
+                nttn_vals = dict(
+                    common_vals,
+                    aggregation_point_id=self.aggregation_point_id.id or False,
+                    **client_data  # merge client fields
+                )
                 nttn = TransmissionNTTN.create(nttn_vals)
                 self._copy_capacity_lines_to_nttn(nttn)
+            else:
+                # Existing record → update client fields only (safe partial write)
+                nttn.write(client_data)
 
         if 'own_network' in selected_links:
             TransmissionOWN = self.env['isp.transmission.own'].sudo()
             own = TransmissionOWN.search([('seq_id', '=', common_vals['seq_id'])], limit=1)
+
+            # If OWN model also has client_name/email/mobile → do the same
+            # (assuming it does — adjust field names if different)
+            client_data_own = {
+                'client_name': common_vals.get('client_name', ''),
+                'email': common_vals.get('email', ''),
+                'mobile': common_vals.get('mobile', ''),
+            }
+
             if not own:
                 own = TransmissionOWN.create(common_vals)
                 self._copy_capacity_lines_to_own(own)
+            else:
+                own.write(client_data_own)  # update if exists
 
     def action_legal_confirm(self):
         for order in self:
@@ -351,8 +416,15 @@ class IspWorkOrder(models.Model):
                 raise ValidationError(
                     _("Please provide both Primary Link and Secondary Link before Legal Confirm.")
                 )
+
+            # ট্রান্সমিশন রেকর্ড তৈরি/খুঁজে নেয়া
             order._ensure_transmission_records_from_links()
+
+            # এখানে client info কপি করো
+            order._copy_client_info_to_transmission()
+
             order.work_state = 'legal_confirm'
+
         return self.action_open_work_order()
 
 
