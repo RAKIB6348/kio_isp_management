@@ -327,6 +327,11 @@ class IspTransmissionNTTN(models.Model):
         'transmission_id',
         string="Capacity Details",
     )
+    contact_person_ids = fields.One2many(
+        'isp.client.contact',
+        'transmission_id',
+        string="Contact Persons",
+    )
 
     def action_add_capacity_line(self):
         self.ensure_one()

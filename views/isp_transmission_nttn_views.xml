@@ -100,9 +100,10 @@
                         </group>
                     </group>
 
-                    <separator string="Capacity Details"/>
+                    
                     <div class="o_row">
                         <div class="o_col-6">
+                            <separator string="Capacity Details" class="mt0"/>
                             <div name="capacity_lines_group" class="kio_capacity_layout_fix kio_nttn_capacity_scope">
                                 <field name="capacity_line_ids" nolabel="1" class="kio_capacity_one2many">
                                     <tree editable="bottom" create="1" edit="1" delete="1"
@@ -120,7 +121,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="o_col-6"/>
+                        <div class="o_col-6">
+                            <separator string="Contact Person Details" class="mt0"/>
+                            <div name="capacity_lines_group" class="kio_capacity_layout_fix kio_nttn_capacity_scope">
+                                <field name="contact_person_ids" nolabel="1" class="kio_capacity_one2many">
+                                    <tree editable="bottom" create="1" edit="1" delete="1"
+                                          class="o_tree_view o_tree_view_compact kio_capacity_tree">
+                                        <field name="contact_type" string="Type"/>
+                                        <field name="name"/>
+                                        <field name="mobile"/>
+                                        <field name="email"/>
+                                    </tree>
+                                </field>
+                                <div class="mt-2" style="text-align:left;">
+                                    <button name="action_add_capacity_line" type="object" string="Add a line"
+                                            class="btn btn-link p-0 kio_capacity_add_line_btn"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <group string="Marketing Remarks">
@@ -229,5 +247,7 @@
               name="NTTN Transmission"
               parent="menu_transmission_root"
               action="action_transmission_nttn"/>
+
+    
 
 </odoo>
