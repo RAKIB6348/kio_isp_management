@@ -56,4 +56,32 @@
         <field name="category_id" ref="module_category_isp_management"/>
     </record>
 
+    <!-- =========================
+         Role Groups (New)
+    ========================== -->
+    <record id="group_isp_marketing" model="res.groups">
+        <field name="name">Marketing</field>
+        <field name="category_id" ref="module_category_isp_management"/>
+    </record>
+
+    <record id="group_isp_marketing_executive" model="res.groups">
+        <field name="name">Marketing Executive</field>
+        <field name="category_id" ref="module_category_isp_management"/>
+    </record>
+
+    <record id="group_isp_nttn" model="res.groups">
+        <field name="name">NTTN</field>
+        <field name="category_id" ref="module_category_isp_management"/>
+    </record>
+
+    <record id="group_isp_noc" model="res.groups">
+        <field name="name">NOC</field>
+        <field name="category_id" ref="module_category_isp_management"/>
+    </record>
+
+    <record id="group_isp_billing" model="res.groups">
+        <field name="name">Billing</field>
+        <field name="category_id" ref="module_category_isp_management"/>
+    </record>
+
 </odoo>
