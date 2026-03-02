@@ -6,6 +6,7 @@ class IspTransmissionNTTN(models.Model):
     _name = 'isp.transmission.nttn'
     _description = 'NTTN Transmission'
     _rec_name = 'marketing_id'
+    _order = 'seq_id desc'
 
     active = fields.Boolean(default=True, invisible=True)
 
