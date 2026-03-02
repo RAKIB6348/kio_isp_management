@@ -296,9 +296,11 @@
             <form>
                 <header>
                     <button name="action_mark_survey_done" string="Survey Done" type="object" class="oe_highlight"
-                            invisible="state != &apos;draft&apos;"/>
+                            invisible="state != &apos;draft&apos;"
+                            groups="kio_isp_management.group_isp_marketing_executive"/>
                     <button name="action_open_work_order" string="Create Work Order" type="object" class="btn-secondary"
-                            invisible="state != &apos;done&apos;"/>
+                            invisible="state != &apos;done&apos;"
+                            groups="kio_isp_management.group_isp_marketing_executive"/>
                     <!-- <field name="state" widget="statusbar"/> -->
                     <!-- ✅ CUSTOM OWL STATUSBAR -->
                     <field name="state" widget="isp_state_duration_statusbar"/>
