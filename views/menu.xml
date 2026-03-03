@@ -4,6 +4,7 @@
     <menuitem id="menu_configuration_root"
               name="Configuration"
               sequence="30"
+              groups="kio_isp_management.group_isp_admin"
 />
 
     <menuitem id="menu_account_management"

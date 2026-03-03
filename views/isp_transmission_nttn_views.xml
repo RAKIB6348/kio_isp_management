@@ -273,7 +273,8 @@
     <menuitem id="menu_transmission_nttn"
               name="NTTN Transmission"
               parent="menu_transmission_root"
-              action="action_transmission_nttn"/>
+              action="action_transmission_nttn"
+              groups="kio_isp_management.group_isp_nttn,kio_isp_management.group_isp_admin"/>
 
 
 </odoo>
