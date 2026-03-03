@@ -62,9 +62,11 @@
                     <!-- invisible="work_state != 'sell_confirm'"/> -->
 
                     <!-- Legal Group Button -->
-                    <button name="action_legal_confirm" string="Legal Confirm" type="object" class="oe_highlight"/>
+                    <button name="action_legal_confirm" string="Legal Confirm" type="object" class="oe_highlight"
+                            groups="kio_isp_management.group_isp_legal"/>
 
-                    <button name="action_legal_revert" string="Legal Revert" type="object" class="oe_highlight"/>
+                    <button name="action_legal_revert" string="Legal Revert" type="object" class="oe_highlight"
+                            groups="kio_isp_management.group_isp_legal"/>
 
                     
                     
