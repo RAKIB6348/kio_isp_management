@@ -42,14 +42,14 @@
                             string="NOC Confirm"
                             type="object"
                             class="oe_highlight"
-
+                            groups="kio_isp_management.group_isp_noc,kio_isp_management.group_isp_admin"
                             invisible="state != 'confirm'"/>
 
                     <button name="action_nttn_done"
                             string="Done"
                             type="object"
                             class="btn btn-success"
-
+                            groups="kio_isp_management.group_isp_noc,kio_isp_management.group_isp_admin"
                             invisible="state != 'noc_confirm'"/>
 
                     <field name="state" widget="isp_state_duration_statusbar"/>
