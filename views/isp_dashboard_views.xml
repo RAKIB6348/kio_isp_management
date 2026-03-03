@@ -10,5 +10,6 @@
         name="Dashboard"
         action="action_isp_dashboard_client"
         sequence="0"
+        groups="kio_isp_management.group_isp_admin"
 />
 </odoo>
