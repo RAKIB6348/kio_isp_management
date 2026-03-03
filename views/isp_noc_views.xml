@@ -7,7 +7,9 @@
         <field name="res_model">isp.transmission.nttn</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('state', 'in', ['confirm', 'noc_confirm', 'done'])]</field>
-        <field name="context">{'search_default_group_by': 'state', 'create': True, 'hide_total_capacity_in_noc': True, 'hide_noc_specific_fields': True}</field>
+        <field name="context">{'search_default_group_by': 'state', 'create': True, 'hide_total_capacity_in_noc': True,
+            'hide_noc_specific_fields': True}
+        </field>
     </record>
 
     <!-- OWN Transmission pending NOC -->
@@ -23,7 +25,7 @@
     <menuitem id="menu_isp_noc_management_root"
               name="NOC Management"
               sequence="7"
-              groups="kio_isp_management.group_isp_nttn_access,kio_isp_management.group_isp_own"/>
+              groups="kio_isp_management.group_isp_noc_access"/>
 
     <menuitem id="menu_isp_noc_nttn"
               name="NTTN Transmission"
