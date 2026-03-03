@@ -48,20 +48,20 @@
                             string="Marketing Confirm"
                             type="object"
                             class="oe_highlight"
-                            groups="kio_isp_management.group_isp_marketing"/>
+/>
                     <!-- invisible="work_state != 'sell_confirm'" -->
 
                     <button name="action_marketing_revert"
                             string="Marketing Revert"
                             type="object"
                             class="oe_highlight"
-                            groups="kio_isp_management.group_isp_marketing"/>
+/>
                     <!-- invisible="work_state != 'sell_confirm'"/> -->
 
                     <!-- Legal Group Button -->
-                    <button name="action_legal_confirm" string="Legal Confirm" type="object" class="oe_highlight" groups="kio_isp_management.group_isp_legal"/>
+                    <button name="action_legal_confirm" string="Legal Confirm" type="object" class="oe_highlight"/>
 
-                    <button name="action_legal_revert" string="Legal Revert" type="object" class="oe_highlight" groups="kio_isp_management.group_isp_legal"/>
+                    <button name="action_legal_revert" string="Legal Revert" type="object" class="oe_highlight"/>
 
                     
                     
@@ -294,10 +294,10 @@
                 <header>
                     <button name="action_mark_survey_done" string="Survey Done" type="object" class="oe_highlight"
                             invisible="state != &apos;draft&apos;"
-                            groups="kio_isp_management.group_isp_marketing_executive"/>
+/>
                     <button name="action_open_work_order" string="Create Work Order" type="object" class="btn-secondary"
                             invisible="state != &apos;done&apos;"
-                            groups="kio_isp_management.group_isp_marketing_executive"/>
+/>
                     <!-- <field name="state" widget="statusbar"/> -->
                     <!-- ✅ CUSTOM OWL STATUSBAR -->
                     <field name="state" widget="isp_state_duration_statusbar"/>
@@ -511,7 +511,7 @@
                eval="[(ref(&apos;kio_isp_management.view_isp_work_order_tree&apos;), &apos;tree&apos;), (ref(&apos;kio_isp_management.view_isp_work_order_form&apos;), &apos;form&apos;)]"/>
     </record><!-- Menu Item -->
     <menuitem id="menu_isp_survey" name="Survey" action="action_isp_survey" sequence="1"
-              groups="kio_isp_management.group_isp_survey_access"/>
+/>
     <menuitem id="menu_work_orders_root" name="Work Orders" action="action_isp_work_orders" sequence="3"
-              groups="kio_isp_management.group_isp_work_order_access"/>
+/>
 </odoo>

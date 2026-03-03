@@ -30,11 +30,11 @@
               name="NTTN Transmission"
               parent="menu_isp_noc_management_root"
               action="action_isp_transmission_nttn_noc"
-              groups="kio_isp_management.group_isp_nttn_access"/>
+/>
 
     <menuitem id="menu_isp_noc_own"
               name="OWN Transmission"
               parent="menu_isp_noc_management_root"
               action="action_isp_transmission_own_noc"
-              groups="kio_isp_management.group_isp_own"/>
+/>
 </odoo>
