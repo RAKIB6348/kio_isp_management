@@ -10,6 +10,7 @@
               name="Account Management"
               action="account.action_move_out_invoice_type"
               sequence="6"
+              groups="kio_isp_management.group_isp_accounts,kio_isp_management.group_isp_admin"
 />
 
 
