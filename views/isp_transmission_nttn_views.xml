@@ -133,7 +133,8 @@
                                         <field name="capacity" string="Capacity" class="isp_capacity_col"
                                                sum="Data Capacity"/>
                                         <field name="vlan_port"/>
-                                        <field name="ip_address"/>
+                                        <field name="ip_address"
+                                               groups="kio_isp_management.group_isp_noc,kio_isp_management.group_isp_admin"/>
                                     </tree>
                                 </field>
                                 <div class="mt-2" style="text-align:left;">
