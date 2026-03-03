@@ -35,7 +35,7 @@
                             string="Confirm"
                             type="object"
                             class="oe_highlight"
-
+                            groups="kio_isp_management.group_isp_nttn,kio_isp_management.group_isp_admin"
                             invisible="state != 'draft'"/>
 
                     <button name="action_nttn_noc_confirm"
